@@ -148,3 +148,17 @@ exports.deleteCar = async (req, res, next) => {
         res.status(400).json({success: false});
     }
 };
+
+//@desc Get all car rentals
+//@route GET /api/v1/cars/CarRentals
+//@access Public
+exports.getCarRentals= (req,res,next)=>{
+    CarRental.getAll((err, data) => {
+        if (err)
+            res.status(500).send({
+                message:
+                    err.message || "Some error occurred while retrieving Car Rentals."
+            });
+        else res.send(data);
+    });
+}
