@@ -15,6 +15,16 @@ package "Cars" {
   [View Cars]
   [Manage Cars]
 }
+package "Reviews" {
+  
+  [View Reviews]
+  [Manage Reviews]
+}
+
+package "Cars" {
+  [View Cars]
+  [Manage Cars]
+}
 }
 
 
@@ -29,6 +39,12 @@ User -- (View Cars)
 
 (View Cars) -- Admin 
 (Manage Cars) -- Admin 
+
+(View Reviews) -- Admin 
+(Manage Reviews) -- Admin 
+
+User -- (View Reviews)
+User -- (Manage Reviews)
 
 
 @enduml
