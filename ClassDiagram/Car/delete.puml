@@ -1,0 +1,23 @@
+@startuml Manage Car (DELETE)
+
+header Rental Car Booking Diagram
+footer Page %page% of %lastpage%
+title "Manage Car (DELETE)"
+
+participant "Client" as client
+participant "<<javaScript>>\n:server" as server
+participant "<<router>>\n:cars" as routerCars
+participant "<<controllers>>\n:cars" as controllersCars
+participant "<<model>>\n:Car" as modelCar
+database "<<MongoDB>>\n:cars" as CarsDatabase
+
+client->server ++:req.delete('/cars/:id')
+server->routerCars ++:app.use('/cars',cars)
+routerCars -> controllersCars ++:deleteCar()
+controllersCars->modelCar ++:findByIdAndDelete(req.params.id)
+modelCar ->CarsDatabase ++: CarSchema
+CarsDatabase --> modelCar --: car
+controllersCars <-- modelCar --:car
+controllersCars->client --:response
+
+@enduml
