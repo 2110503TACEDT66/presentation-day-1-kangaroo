@@ -1,4 +1,4 @@
-const Booking = require('../models/Booking');
+const Booking = require('../models/Bookings');
 const Car = require('../models/Car');
 
 //@desc Get all bookings
@@ -64,7 +64,7 @@ exports.getBooking = async(req,res,next)=>{
 };
 
 //@desc     Add booking
-//@route    POST /api/v1/bookings/:carId/booking
+//@route    POST /api/v1/cars/:carId/bookings
 //@access   Private
 exports.addBooking = async (req, res, next) => {
     try {

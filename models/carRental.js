@@ -8,13 +8,13 @@ const CarRental = function(CarRental) {
 };
 
 CarRental.getAll = result => {
-    sql.query("SELECT * FROM CarRentals", (err, res) => {
+    sql.query("SELECT * FROM carRentals", (err, res) => {
         if (err) {
             console.log("error: ", err);
             result(null, err);
             return;
         }
-        console.log("CarRental: ", res);
+        console.log("carRental: ", res);
         result(null, res);
     });
 }

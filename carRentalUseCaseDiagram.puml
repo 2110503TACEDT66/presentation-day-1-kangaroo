@@ -1,0 +1,34 @@
+@startuml carRental System Use Case Diagram
+left to right direction
+
+actor "Admin" as Admin
+actor "User" as User
+
+rectangle "CarRental System" as CarRentalSystem {
+package "Bookings" {
+  
+  [View Bookings]
+  [Manage Bookings]
+}
+
+package "Cars" {
+  [View Cars]
+  [Manage Cars]
+}
+}
+
+
+(View Bookings) -- Admin 
+(Manage Bookings) -- Admin 
+
+
+User -- (View Bookings)
+User -- (Manage Bookings)
+
+User -- (View Cars)
+
+(View Cars) -- Admin 
+(Manage Cars) -- Admin 
+
+
+@enduml

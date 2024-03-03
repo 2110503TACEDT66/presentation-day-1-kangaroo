@@ -45,7 +45,7 @@ app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocs));
 // Rate limiting
 const limiter = rateLimit({
     windowMs: 10 * 60 * 1000, // 10 mins
-    max: 100
+    max: 5000
   });
   
 app.use(limiter);
@@ -72,7 +72,7 @@ app.use('/api/v1/cars',cars);
 app.use('/api/v1/auth',auth);
 app.use('/api/v1/bookings',bookings);
 
-const PORT = process.env.PORT || 5001;
+const PORT = process.env.PORT || 5050;
 const server = app.listen(PORT,console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`));
 
 //Handle unhandled promise rejections

@@ -1,4 +1,5 @@
 const Car = require("../models/Car");
+const CarRental = require("../models/carRental");
 
 //@desc     Get all cars
 //@route    GET /api/v1/cars
@@ -127,6 +128,7 @@ exports.updateCar = async (req, res, next) => {
 
         res.status(200).json({success: true, data: car});
     } catch(err) {
+        console.log(err);
         res.status(400).json({success: false});
     }
 };
