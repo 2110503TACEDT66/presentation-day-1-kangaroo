@@ -19,6 +19,7 @@ connectDB();
 const cars = require('./routes/cars');
 const auth = require('./routes/auth');
 const bookings = require('./routes/bookings');
+const reviews = require('./routes/reviews');
 
 const app=express();
 
@@ -71,6 +72,7 @@ app.use(mongoSanitize());
 app.use('/api/v1/cars',cars);
 app.use('/api/v1/auth',auth);
 app.use('/api/v1/bookings',bookings);
+app.use('/api/v1/reviews', reviews);
 
 const PORT = process.env.PORT || 5050;
 const server = app.listen(PORT,console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`));
