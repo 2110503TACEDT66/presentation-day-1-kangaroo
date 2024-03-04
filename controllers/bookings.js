@@ -87,7 +87,7 @@ exports.addBooking = async (req, res, next) => {
         
         //If the user is not an admin, they can only create 3 bookings
         if (existedBookings.length >= 3 && req.user.role !== 'admin') {
-            return res.status(404).json({
+            return res.status(400).json({
                 success: false,
                 message: `The user with ID ${req.user.id} has already made 3 bookings`
             });
