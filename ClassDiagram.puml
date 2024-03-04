@@ -1,7 +1,7 @@
 @startuml 
 left to right direction
 package "carRental"{
-    class "<<Application>>\nCarService" as CarService{}
+    class "<<Application>>\nCarService" as carRental{}
 
     class "<<Resource>>\nCars" as ResourceCars{
         <<GET>> +getCars():Car
@@ -23,10 +23,36 @@ package "carRental"{
         -LicensePlate
     }
 
+    '________
+
+
+
+    class "<<Resource>>\nBookings" as ResourceBookings{
+        <<GET>> +getBookings():Booking
+        <<POST>> +createBooking():Booking
+    }
+
+    class "<<Resource>>\nBooking" as ResourceBooking {
+        <<GET>> +getBooking(): Booking
+        <<PUT>> +updateBooking(): Booking
+        <<DELETE>> +deleteBooking(): void
+    }
+
+    class "<<Representation>>\nBooking" as RepresentationBooking {
+        -bookingDate
+        -user
+        -car
+        -createdAt
+
+    }
+
 }
 
-CarService ..> ResourceCars:"/Cars\n<<Path>>"
+carRental ..> ResourceCars:"/Cars\n<<Path>>"
 ResourceCars ..> ResourceCar: "/{CarId}\n<<Path>>"
 ResourceCar ..> RepresentationCar: "<<use>>"
 
+carRental ..> ResourceBookings:"/Bookings\n<<Path>>"
+ResourceBookings ..> ResourceBooking: "/{BookingId}\n<<Path>>"
+ResourceBooking ..> RepresentationBooking: "<<use>>"
 @enduml
