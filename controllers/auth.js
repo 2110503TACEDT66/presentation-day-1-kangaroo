@@ -75,9 +75,9 @@ exports.login = async (req, res, next) => {
     }
 
     // Create token
-    // const token = user.getSignedJwtToken();
-    // res.status(200).json({ success: true, token });
-    sendTokenResponse(user, 200, res);
+    const token = user.getSignedJwtToken();
+    res.status(200).json({ success: true, _id: user._id, email: user.email, password: user.password, token });
+    // sendTokenResponse(user, 200, res);
     } catch (err) {
         res.status(401).json({ success: false, msg: 'Cannot login because of SQL injection'});
     }
