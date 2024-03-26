@@ -8,6 +8,7 @@ const {xss} = require('express-xss-sanitizer');
 const rateLimit = require('express-rate-limit');
 const swaggerJsDoc = require('swagger-jsdoc');
 const swaggerUI = require('swagger-ui-express');
+const cors = require('cors')
 
 //Load env vars
 dotenv.config({path:'./config/config.env' });
@@ -22,6 +23,8 @@ const bookings = require('./routes/bookings');
 const reviews = require('./routes/reviews');
 
 const app=express();
+
+app.use(cors())
 
 const swaggerOptions = {
     swaggerDefinition: {
