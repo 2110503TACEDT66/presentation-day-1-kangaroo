@@ -30,7 +30,27 @@ const CarSchema = new mongoose.Schema({
     LicensePlate: {
         type: String,
         required: [true, 'Please specify a license plate number']
-    }
+    },
+    PictureCover: {
+        type: String,
+        required: false
+      },
+    Picture1: {
+        type: String,
+        required: false
+      },
+    Picture2: {
+        type: String,
+        required: false
+      },
+    Picture3: {
+        type: String,
+        required: false
+      },
+    Picture4: {
+        type: String,
+        required: false
+      },
 }, {
     toJSON: {virtuals: true},
     toObject: {virtuals: true}
