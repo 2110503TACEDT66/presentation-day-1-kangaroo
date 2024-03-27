@@ -1,7 +1,11 @@
 const mongoose = require('mongoose');
 
 const BookingSchema = new mongoose.Schema({
-    bookingDate: {
+    bookingDateFrom: {
+        type: Date,
+        required: true
+    },
+    bookingDateTo: {
         type: Date,
         required: true
     },
