@@ -26,6 +26,9 @@ const app=express();
 
 app.use(cors())
 
+const PORT = process.env.PORT || 5050;
+const server = app.listen(PORT,console.log(`Server running in ${process.env.NODE_ENV} mode on ${process.env.HOST}: ${PORT}`));
+
 const swaggerOptions = {
     swaggerDefinition: {
         openapi: '3.0.0',
@@ -36,7 +39,7 @@ const swaggerOptions = {
         },
         servers: [
             {
-                url: 'http://localhost:5000/api/v1',
+                url: process.env.HOST+ ":" + PORT +'/api/v1',
             },
         ],
     },
@@ -77,8 +80,7 @@ app.use('/api/v1/auth',auth);
 app.use('/api/v1/bookings',bookings);
 app.use('/api/v1/reviews', reviews);
 
-const PORT = process.env.PORT || 5050;
-const server = app.listen(PORT,console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`));
+
 
 //Handle unhandled promise rejections
 process.on('unhandledRejection',(err,promise)=>{
