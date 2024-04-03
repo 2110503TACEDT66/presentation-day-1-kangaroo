@@ -6,6 +6,7 @@ const mongoSanitize = require('express-mongo-sanitize');
 const helmet = require('helmet');
 const {xss} = require('express-xss-sanitizer');
 const rateLimit = require('express-rate-limit');
+const cors = require('cors')
 const swaggerJsDoc = require('swagger-jsdoc');
 const swaggerUI = require('swagger-ui-express');
 const cors = require('cors')
@@ -72,7 +73,8 @@ app.use(cookieParser());
 // Sanitize data
 app.use(mongoSanitize());
 
-
+//Enable cors
+app.use(cors);
 
 //Mount routers
 app.use('/api/v1/cars',cars);
